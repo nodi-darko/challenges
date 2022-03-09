@@ -5,7 +5,7 @@
   let whichOne;
   let time = 10;
   let ansButtons = [document.getElementById("ergebnis"), document.getElementById("button1"), document.getElementById("button2"), document.getElementById("button3")];
-
+  let which = 5;
 
   setTimeout(tacts, 1000);
 
@@ -57,18 +57,24 @@
   document.getElementById("numberOfPoints").style.fontSize = "32px";  
 
   function onClick(which){
+    which = which;
     if (whichOne == which){
       points ++;
       time = 10;
+      ansButtons[whichOne].style.backgroundColor = "green";
+      setTimeout(delay, 2000);
+      setTimeout(askNow, 2000);
     }else{
       points --;
       time = 10;
-      delay();
+        
+      ansButtons[whichOne].style.backgroundColor = "green";
+      ansButtons[which].style.backgroundColor = "red";
+      setTimeout(delay, 2000);
+      setTimeout(askNow, 2000);
     }
     document.getElementById("numberOfPoints").innerHTML   = "Punkte: " + points;
     document.getElementById("numberOfPoints").style.fontSize = "32px";  
-
-    delay();
     
   }
 
@@ -80,17 +86,13 @@
       points --;
       document.getElementById("numberOfPoints").innerHTML   = "Punkte: " + points;
       document.getElementById("numberOfPoints").style.fontSize = "32px";    
-      delay();
+      time = 10;
     }
     setTimeout(tacts, 1000);
   }
 
-function delay(){
-  ansButtons[whichOne].style.backgroundColor = "green";
-  setTimeout(delay2, 2000);
-  setTimeout(askNow, 2000);
-}
 
-function delay2(){
+function delay(){
   ansButtons[whichOne].style.backgroundColor = "grey";
+  ansButtons[which].style.backgroundColor = "grey";
 }
